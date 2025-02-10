@@ -1,11 +1,10 @@
 //2025년2월10일
 //C언어 과제_1
-
 #include <stdio.h>
 
 void main()
 {
-    int result = 0;
+    float result = 0;
     int a = 0;
     int b = 0;
     int c = 0;
@@ -14,13 +13,17 @@ void main()
     scanf("%d", &b);
     scanf("%d", &c);
     
-    result = (a + b) * c - (a - b) / c;
+   
     
     if (c != 0)
-    printf("result = %d\n", result);
-    
+    {
+    result = (a + b) * c - (a - b) / c;
+    printf("result = %f\n", result);
+    }
     else
-    printf("Exception = %d\n", result);
+    {
+    printf("Exception");
+    }
 }
 
 //C언어 과제_2
