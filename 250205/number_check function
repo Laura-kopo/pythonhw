@@ -3,9 +3,13 @@ def check_prime_num(x):
   for i in range(2, x):
     if x % i == 0:
       return False
-    return True
-  if x == 1:
-    return False
+  return True
 
 number = int(input('판별할 자연수를 입력하세요:'))
-print(check_prime_num(number))
+
+if number == 1:
+  print('1입니다')
+elif number <= 0:
+  print('자연수를 입력하세요.')
+else:
+  print(check_prime_num(number))
