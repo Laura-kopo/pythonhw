@@ -1,45 +1,25 @@
-//C언어_3: 숫자 암호 변환기
 #include <stdio.h>
 
 void main()
 {
-    int n = 0;
+    int a = 0;
+    int b = 0;
     
-    scanf("%d", &n);
+    scanf("%d", &a);
+    scanf("%d", &b);
     
-    switch(n)
+    if(a != 0 && b != 0)
     {
-        case 0:
-            printf("A");
-            break;
-        case 1:
-            printf("B");
-            break;
-        case 2:
-            printf("C");
-            break;
-        case 3:
-            printf("D");
-            break;
-        case 4:
-            printf("E");
-            break;
-        case 5:
-            printf("F");
-            break;
-        case 6:
-            printf("G");
-            break;
-        case 7:
-            printf("H");
-            break;
-        case 8:
-            printf("I");
-            break;
-        case 9:
-            printf("J");
-            break;
-        default:
-            printf("잘못된 입력입니다!");
+        if (a > b && a % b == 0)
+        {
+            printf("A와 B를 나눈 값은 %d", a / b);
+        } else if (a > b && a % b != 0) {
+            printf("A와 B를 나눈 나머지 값은 %d", a % b);
+        } else if (a < b) {
+            printf("A와 B를 더한 값은 %d", a + b);
+        } else {
+            printf("A: %d, B: %d", a, b);
+        }
+    } else {
+        printf("Error");
     }
-}
