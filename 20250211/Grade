@@ -1,0 +1,38 @@
+//C언어_4: 등급 계산기
+#include <stdio.h>
+
+void main()
+{
+    int score = 0;
+    
+    scanf("%d", &score);
+    
+    switch(score)
+    {
+        case 90 ... 100:
+            printf("A등급");
+            break;
+        case 80 ... 89:
+            printf("B등급");
+            break;
+        case 70 ... 79:
+            printf("C등급");
+            break;
+        case 60 ... 69:
+            printf("D등급");
+            break;
+        default:
+            printf("F등급");
+    }
+    if (score >= 90)
+    {
+        score = score * 1.1;
+        if (score >= 100) {
+            score = 100;
+        }
+        printf("%d", score);
+    } else if (score >= 80 && score <= 89) {
+        score = score * 1.05;
+        printf("%d", score);
+    }
+}
