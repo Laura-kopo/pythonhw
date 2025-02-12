@@ -3,6 +3,7 @@
 void main()
 {
     int score = 0;
+    float score_b = 0.0;
     
     scanf("%d", &score);
     
@@ -28,13 +29,13 @@ void main()
     }
     if (score >= 90 && score <= 100)
     {
-        score = score * 1.1;
-        if (score >= 100) {
-            score = 100;
+        score_b = score * 1.1;
+        if (score_b >= 100.0) {
+            score_b = 100.0;
         }
-        printf("%d", score);
+        printf("%f", score_b);
     } else if (score >= 80 && score <= 89) {
-        score = score * 1.05;
-        printf("%d", score);
+        score_b = score * 1.05;
+        printf("%f", score_b);
     }
 }
