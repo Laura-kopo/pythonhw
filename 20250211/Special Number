@@ -9,35 +9,38 @@ void main()
     
     scanf("%d", &n);
     
-    if (n >= 0 && n <= 999)
+    if ( 0 <= n <= 999)
     {
         if (n % 3 == 0 && n % 2 == 1)
         {
             printf("Special Number1");
-        } else if (n >= 10) {
-            if (n >= 10 && n < 100)
+        } else if (10 <= n < 100) {
+            if (10 <= n < 100)
             {
                 f = n / 10;
                 s = n - 10 * f;
                 if ((f + s) % 7 == 0)
                 {
-                    printf("Special Number2_1");
-                } else if (f > s) {
-                    printf("Special Number3_1");
+                    printf("Special Number2");
+                } else if(f > s) {
+                    printf("Special Number3");
+                } else {
+                    printf("Normal Number");
                 }
-            } else if (n >= 100) {
+            } else if (100 <= n < 999) {
                 f = n / 100;
                 s = n / 10 - 10 * f;
-                t = n % 10;
+                t = n % 100;
+                
                 if ((f + s + t) % 7 == 0)
                 {
-                    printf("Special Number2_2");
+                    printf("Special Number2");
                 } else if (f > t) {
-                    printf("Special Number3_2");
+                    printf("Special Number3");
+                } else {
+                    printf("Normal Number");
                 }
             }
-        } else {
-            printf("Normal Number");
         }
     }
 }
