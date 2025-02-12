@@ -2,11 +2,14 @@
 
 void main()
 {
-    int tem = 0;
+    float tem = 0;
+    int temp = 0;
     
-    scanf("%d", &tem);
+    scanf("%f", &tem);
     
-    switch(tem)
+    temp = tem + 0.5;
+
+    switch(temp)
     {
         case 30 ... 1000:
             printf("너무 더워요! 반팔과 반바지를 입으세요.");
