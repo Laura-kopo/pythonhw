@@ -1,0 +1,16 @@
+//C언어_3: 역 직각삼각형 만들기
+#include <stdio.h>
+
+void main()
+{
+    int n = 0;
+    
+    scanf("%d", &n);
+    
+    for (int i = 0; i < n; i++) {
+        for (int j = 0 + i; j < n; j++) {
+            printf("*");
+        }
+        printf("\n");
+    }
+}
