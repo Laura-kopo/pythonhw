@@ -1,0 +1,21 @@
+//C언어_1: 특이한 수열 탐색기
+#include <stdio.h>
+
+void main()
+{
+    int m = 0;
+    int n = 0;
+    
+    scanf("%d", &m);
+    scanf("%d", &n);
+    
+    for(int i = 0; i <= (n - m); i++) {
+        if ((m + i) % 7 == 0 || (m + i) % 10 == 7) {
+            continue;
+        }
+        printf("%d\n", m + i);
+        if ((m + i) % 5 == 0) {
+            break;
+        }
+    }
+}
