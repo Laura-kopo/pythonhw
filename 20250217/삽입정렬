@@ -1,0 +1,23 @@
+//C언어: 삽입정렬
+#include <stdio.h>
+
+void main()
+{
+    int arr[5] = {9, 4, 3, 5, 1};
+    int k;
+    
+    for (int a = 1; a < 5; a++) {
+        for (int i = a; i > 0; i--) {
+            k = arr[i];
+            if(arr[i - 1] > k) {
+                arr[i] = arr[i - 1];
+                arr[i - 1] = k;
+            }
+        }
+        printf("%d회차(key = %d): ", a, k);
+        for (int j = 0; j < 5; j++) {
+            printf("%d ", arr[j]);
+        }
+        printf("\n");
+    }
+}
