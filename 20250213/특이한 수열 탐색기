@@ -10,7 +10,7 @@ void main()
     scanf("%d", &n);
     
     for(int i = 0; i <= (n - m); i++) {
-        if ((m + i) % 7 == 0 || (m + i) % 10 == 7) {
+        if ((m + i) % 7 == 0 || (m + i) % 10 == 7 || (m + i) / 10 == 7) {
             continue;
         }
         printf("%d\n", m + i);
