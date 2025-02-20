@@ -1,1 +1,27 @@
+//선택정렬
+#include <stdio.h>
 
+void main()
+{
+    int arr[5] = {64, 25, 12, 22, 11};
+    int min, temp;
+    int *pmin, *pex;
+    
+    for (int i = 0; i < 4; i++) {
+        pmin = &arr[i];
+        
+        for (int j = i + 1; j < 5; j++) {
+            if (arr[j] < *pmin) {
+                pmin = &arr[j];
+            }
+        }
+        printf("%d회차 min: %d(%d)\n", i + 1, *pmin, pmin);
+        
+        temp = arr[i];
+        arr[i] = *pmin;
+        *pmin = temp;
+    }
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", arr[i]);
+    }
+}
