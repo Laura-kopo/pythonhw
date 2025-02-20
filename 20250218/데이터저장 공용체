@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+void main()
+{
+    union var_data {
+        int intVal;
+        float floatVal;
+        char charVal;
+    };
+    
+    union var_data vd;
+    scanf("%d", &vd.intVal);
+    printf("intVal: %d(%d)\n", vd.intVal, &vd.intVal);
+    
+    printf("===================\n");
+    
+    scanf("%f", &vd.floatVal);
+    printf("intVal: %d(%d)\n", vd.intVal, &vd.intVal);
+    printf("floatVal: %f(%d)\n", vd.floatVal, &vd.floatVal);
+    
+    printf("===================\n");
+    
+    scanf("%s", &vd.charVal);
+    printf("intVal: %d(%d)\n", vd.intVal, &vd.intVal);
+    printf("floatVal: %f(%d)\n", vd.floatVal, &vd.floatVal);
+    printf("charVal: %c(%d)\n", vd.charVal, &vd.charVal);
+}
