@@ -1,0 +1,20 @@
+//학생 정보 관리 프로그램
+#include <stdio.h>
+
+void main()
+{
+    struct student_info {
+        char name;
+        int age;
+        char grade;
+    };
+    
+    struct student_info id1;
+    scanf("%s", &id1.name);
+    scanf("%d", &id1.age);
+    scanf("%s", &id1.grade);
+    
+    printf("name: %s\n", &id1.name);
+    printf("age: %d\n", id1.age);
+    printf("grade: %s", &id1.grade);
+}
