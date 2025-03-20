@@ -1,1 +1,58 @@
+#심장질환
+import pandas as pd
 
+#데이터셋 열 구성
+col_Names = ['age', 'sex', 'cp', 'trestbps', 'chol', 'fbs', 'restecg', 'thalach','exang', 'oldpeak', 'slope', 'ca', 'thal', 'label']
+
+#label은 0~3으로 구성. (0: 정상, 1~3: 심장질환 보유. 경증~중증)
+#링크로부터 CSV 데이터를 받아 데이터 프레임 저장
+df_heart = pd.read_csv('http://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.cleveland.data',names=col_Names)
+df_heart
+
+import numpy as np
+
+#'?'까지 모두 NaN으로 교체
+df_heart.replace('?', np.nan, inplace=True)
+
+#NaN이 포함된 행 삭제
+df_heart=df_heart.dropna()
+df_heart
+
+#저장한 데이터를 학습 데이터 70%와 테스트 데이터 30%로 분할
+from sklearn.model_selection import train_test_split
+
+train, test = train_test_split(df_heart, test_size=0.3, random_state=0, stratify=df_heart['label'])
+
+#학습 데이터 분할
+train_X = train[train.columns[:13]]
+train_Y = train[train.columns[13:]]
+
+#테스트 데이터
+test_X = test[test.columns[:13]]
+test_Y = test[test.columns[13:]]
+
+#데이터의 레이블 분포를 히스토그램으로 확인
+import matplotlib.pyplot as plt
+
+plt.hist(df_heart.label, bins=4)
+
+#데이터의 특성 간 상관관계 및 레이블과의 관계를 히트맵으로 확인
+import matplotlib.pyplot as plt
+
+plt.hist(df_heart.label, bins=4)
+
+#랜덤 포레스트 알고리즘해서 학습과 데이터 수행
+import seaborn as sns
+
+ax = sns.heatmap(df_heart.corr( ), annot=True, annot_kws={"size":6})
+plt.show( )
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn import metrics
+
+#트리 수 = 100
+model = RandomForestClassifier(n_estimators=100)
+model.fit(train_X, train_Y)
+
+pred_RF = model.predict(test_X)
+print('랜덤 포레스트 알고리즘 예측 정확도:', metrics.accuracy_score(pred_RF, test_Y))
