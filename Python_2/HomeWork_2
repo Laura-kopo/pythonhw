@@ -30,7 +30,7 @@ print("\nKendall Correlation Analysis")
 print(kendallCoef)
 
 #결과 해석
-#Pearson Correlation = 0.754125: 0.6 이상으로 GDP 성장률과 인구수는 양의 상관관계가 있다.
-#Spearman Correlation = 0.192685: 0.6 미만으로 GDP 성장률과 인구수는 상관관계가 없다.
-#Kendall Correlation = 0.101886: 0.6 미만으로 GDP 성장률과 인구수는 상관관계가 없다.
+#Pearson Correlation = 0.754125: GDP 성장률과 인구수는 양의 상관관계가 있다.
+#Spearman Correlation = 0.192685: GDP 성장률과 인구수는 상관관계가 약하다.
+#Kendall Correlation = 0.101886: GDP 성장률과 인구수는 상관관계가 약하다.
 #==> Pearson을 제외하고 Spearman과 Kendall 상관관계에서는 GDP 성장률과 인구수는 연관이 없다는 결론 
