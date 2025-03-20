@@ -1,0 +1,36 @@
+#GDP 성장률과 인구 수의 상관관계
+import pandas as pd
+
+data = {'국가': ['미국','일본','영국','프랑스','독일','이탈리아',
+      '캐나다','대한민국','러시아','중국','인도', '인도네시아',
+      '아르헨티나','브라질', '멕시코', '호주', '남아프리카공화국',
+      '사우디아라비아','튀르키예', '유럽연합(EU)'],
+      'GDP성장률':[2.0, 1.5, 1.8, 2.1, 1.2, 1.6, 2.3, 2.5, 1.0, 5.0, 6.5,
+      5.0, 2.0, 2.2, 2.8, 2.0, 1.5, 3.5, 3.0, 1.8],
+      '인구수' : [333, 125, 68, 67, 83, 60, 38, 51, 145, 1412, 1366, 276, 45,
+      213, 126, 26, 60, 35, 84, 447]}
+
+#데이터프레임 만들기
+df = pd.DataFrame(data)
+print(df.head(3)) #위에서부터 3줄만 출력
+
+#Pearson 상관계수
+pearsonCoef = df[['GDP성장률', '인구수']].corr(method = 'pearson')
+print("\nPearson Correlation Analysis")
+print(pearsonCoef)
+
+#Spearman 상관계수
+spearmanCoef = df[['GDP성장률', '인구수']].corr(method = 'spearman')
+print("\nSpearman Correlation Analysis")
+print(spearmanCoef)
+
+#Kendall 상관계수
+kendallCoef = df[['GDP성장률', '인구수']].corr(method = 'kendall')
+print("\nKendall Correlation Analysis")
+print(kendallCoef)
+
+#결과 해석
+#Pearson Correlation = 0.754125: 0.6 이상으로 GDP 성장률과 인구수는 양의 상관관계가 있다.
+#Spearman Correlation = 0.192685: 0.6 미만으로 GDP 성장률과 인구수는 상관관계가 없다.
+#Kendall Correlation = 0.101886: 0.6 미만으로 GDP 성장률과 인구수는 상관관계가 없다.
+#==> Pearson을 제외하고 Spearman과 Kendall 상관관계에서는 GDP 성장률과 인구수는 연관이 없다는 결론 
