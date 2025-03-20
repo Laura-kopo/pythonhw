@@ -1,0 +1,80 @@
+import sys
+
+!sudo add-apt-repository ppa:saiarcot895/chromium-beta
+!sudo apt remove chromium-browser
+!pip3 install selenium
+!apt-get update
+!apt install chromium-chromedriver
+!cp /usr/lib/chromium-browser/chromedriver /usr/bin
+sys.path.insert(0,'/usr/lib/chromium-browser/chromedriver')
+
+import sys
+
+!sudo add-apt-repository ppa:saiarcot895/chromium-beta
+!sudo apt remove chromium-browser
+!pip3 install selenium
+!apt-get update
+!apt install chromium-chromedriver
+!cp /usr/lib/chromium-browser/chromedriver /usr/bin
+sys.path.insert(0,'/usr/lib/chromium-browser/chromedriver')
+
+url = 'https://www.yna.co.kr/theme/mostviewed/index?site=popularnews_btn_more'
+driver.get(url)
+
+columns = ['순위', '기사 제목', '기사 작성일']
+
+rank = []
+title = []
+date = []
+
+for i in range(1, 19):
+  rank.append(i)
+  title.append(driver.find_element(By.CSS_SELECTOR, '#container > div > div.content03 > section > div > ul > li:nth-child(' + str(i) + ') > div > div > strong > a > span').text)
+  date.append(driver.find_element(By.CSS_SELECTOR, '#container > div > div.content03 > section > div > ul > li:nth-child(' + str(i) + ') > div > div > span').text)
+
+import pandas as pd
+
+df = pd.DataFrame({columns[0]: rank, columns[1]: title, columns[2]: date}, columns=columns)
+df.head()
+
+df.to_csv('top19_news.csv', index=False)
+
+!sudo apt-get install -y fonts-nanum
+!sudo fc-cache -fv
+!rm ~/.cache/matplotlib -rf
+
+import csv
+
+#CSV 파일 읽어오기
+f = open('top19_news.csv', 'r')
+rdr = csv.reader(f)
+f.close
+
+title = ''
+
+for line in rdr:
+  title = title + ' ' + line[1]
+  print(title)
+
+title = title[6:]
+print(title)
+
+!pip install konlpy
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+from collections import Counter
+from konlpy.tag import Okt
+import numpy as np
+
+#문자열 분석하기
+okt = Okt()
+nouns = okt.nouns(title)
+words = [n for n in nouns if len(n) > 1]
+c = Counter(words)
+
+#워드클라우드 생성하기
+wc = WordCloud(font_path='/usr/share/fonts/truetype/nanum/NanumBarunGothic.ttf',\
+scale=2.0, colormap='Spectral')
+gen = wc.generate_from_frequencies(c)
+plt.figure()
+plt.imshow(gen)
