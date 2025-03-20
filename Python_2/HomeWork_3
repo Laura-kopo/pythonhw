@@ -32,5 +32,5 @@ print(fit.summary())
 
 #결과 해석
 #회귀식: price = 1.306e+05 + 201.5701 * size + 1.087e+04 * age + 2616.6638 * kindergarten + -7357.5403 * elementarySchool + 3712.3288 * busStop + 72442433 * hospital - 1.94e+04 * mart
-#R-squared = 0.683으로 회귀식은 설명력이 있다고 볼 수 있다.
+#Adj.R-squared = 0.498으로 회귀식은 0.4 보다 크기 때문에 설명력이 있다고 볼 수 있다.
 #각 변수들의 p-vaule 중 0.05보다 작은 것은 mart(= 0.017)만 유의미한 변수라고 볼 수 있다.
