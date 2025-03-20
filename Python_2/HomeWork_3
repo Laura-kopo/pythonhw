@@ -1,0 +1,36 @@
+#아파트 매매가격의 요인 분석
+import pandas as pd
+import matplotlib.pylab as plt
+from statsmodels.formula.api import ols
+from sklearn.linear_model import LinearRegression
+
+price = [174000, 156500, 168000, 145000, 200000, 201000, 185000, 170000, 143000, 163500,
+         158000, 168000, 139200, 184320, 165800, 161850, 100000, 139500, 160500, 150000]
+size = [152, 118, 118, 85, 160, 175, 176, 170, 110, 120,
+        125, 160, 109, 111, 161, 150, 147, 98, 115, 160]
+age = [19, 19, 19, 19, 18, 18, 18, 17, 17, 16,
+      15, 15, 15, 15, 14, 14, 11, 11, 11, 11]
+kindergarten = [22, 22, 22, 22, 22, 21, 21, 20, 20, 20,
+                19, 19, 10, 10, 9, 8, 4, 4, 4, 4]
+elementarySchool = [10, 10, 10, 10, 10, 11, 11, 11, 11, 11,
+                    11, 12, 12, 12, 12, 12, 12, 12, 12, 12]
+busStop = [13, 13, 13, 13, 15, 15, 15, 16, 16, 17,
+           18, 23, 23, 24, 24, 24, 29, 29, 29, 29]
+hospital = [19, 19, 19, 19, 18, 18, 16, 16, 16, 16,
+            15, 15, 15, 15, 15, 14, 14, 14, 14, 14]
+mart = [19, 19, 19, 19, 17, 17, 17, 17, 17, 16,
+        16, 16, 16, 14, 14, 14, 14, 14, 14, 14]
+
+#Data 프레임 생성
+data = {'price': price, 'size': size, 'age': age,' kindergarten': kindergarten,
+        'elementarySchool': elementarySchool, 'busStop': busStop, 'hospital': hospital, 'mart': mart}
+df = pd.DataFrame(data)
+
+#종속변수는 price, 독립변수는 size, age, kindergarten, elementarySchool, busStop, hospital, mart로 단순 선형 회귀분석
+fit = ols('price ~ size + age + kindergarten + elementarySchool + busStop + hospital + mart', data = df).fit()
+print(fit.summary())
+
+#결과 해석
+#회귀식: price = 1.306e+05 + 201.5701 * size + 1.087e+04 * age + 2616.6638 * kindergarten + -7357.5403 * elementarySchool + 3712.3288 * busStop + 72442433 * hospital - 1.94e+04 * mart
+#R-squared = 0.683으로 회귀식은 설명력이 있다고 볼 수 있다.
+#각 변수들의 p-vaule 중 0.05보다 작은 것은 mart(= 0.017)만 유의미한 변수라고 볼 수 있다.
